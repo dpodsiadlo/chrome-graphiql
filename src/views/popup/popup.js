@@ -14,12 +14,16 @@ const openTab = url => () => {
             chrome.tabs.create({url: localUrl})
         }
     });
+
+    window.close()
+
 }
 
 
 const Popup = () => (
     <Styled>
-        <button onClick={openTab('editor.html')}>Open GraphiQL</button>
+        <div className="logo">GraphiQL</div>
+        <button onClick={openTab('editor.html')}>Open editor</button>
         <button onClick={openTab('options.html')}>Options</button>
     </Styled>
 )
