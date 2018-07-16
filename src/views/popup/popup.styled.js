@@ -8,12 +8,12 @@ export default styled.div`
   height: auto;
   white-space: nowrap;
   
-  a {
+  button {
     display: inline-block;
-    width: 100%;
-    margin: 0;
-    padding: 1em;
-    
+    box-sizing: border-box;
+    padding: .5em 1em;
+    margin: 0.3em;
+    cursor: pointer;
   }
   
 `

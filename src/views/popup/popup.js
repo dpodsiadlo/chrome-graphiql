@@ -4,13 +4,23 @@ import ReactDOM from 'react-dom'
 import Styled from './popup.styled'
 
 
+const openTab = url => () => {
+    const localUrl = chrome.extension.getURL(url)
+
+    chrome.tabs.query({url: localUrl}, function (tabs) {
+        if (tabs.length) {
+            chrome.tabs.update(tabs[0].id, {active: true})
+        } else {
+            chrome.tabs.create({url: localUrl})
+        }
+    });
+}
+
+
 const Popup = () => (
     <Styled>
-        <a href={chrome.runtime.getURL('editor.html')} target="chrome-graphiql">Open GraphiQL</a>
-        <a href="#" target="chrome-graphiql-options" onClick={evt => {
-            chrome.tabs.create({'url': 'chrome://extensions/?options=' + chrome.runtime.id});
-            evt.preventDefault()
-        }}>Options</a>
+        <button onClick={openTab('editor.html')}>Open GraphiQL</button>
+        <button onClick={openTab('options.html')}>Options</button>
     </Styled>
 )
 

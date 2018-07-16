@@ -11,5 +11,13 @@ function graphQLFetcher(graphQLParams) {
     }).then(response => response.json());
 }
 
+const query = `{
+  allUsers{
+    firstName
+    lastName
+    email
+  }
+}`
 
-ReactDOM.render(<GraphiQL fetcher={graphQLFetcher} />, document.getElementById('root'))
+
+ReactDOM.render(<GraphiQL fetcher={graphQLFetcher} query={query} />, document.getElementById('root'))
