@@ -16,8 +16,9 @@ class Editor extends React.Component {
     graphQLFetcher = (graphQLParams) => {
         return new Promise(resolve => {
             chrome.storage.sync.get(['settings'], options => {
+                const {settings: {apiUrl = 'https://fakerql.com/graphql'} = {}} = options
 
-                fetch(options.settings.apiUrl, {
+                fetch(apiUrl, {
                     method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(graphQLParams),
