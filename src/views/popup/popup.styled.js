@@ -13,7 +13,7 @@ export default styled.div`
     display: inline-block;
     box-sizing: border-box;
     border: none;
-    background: #ffffff;
+    background: ${props => props.theme.default.bg};
     padding: .5em 2em;
     margin: 0;
     cursor: pointer;
@@ -21,8 +21,8 @@ export default styled.div`
     outline: none;
     
     &:hover{
-        background: #e10098;
-        color: #ffffff;
+       background: ${props => props.theme.primary.bg};
+       color: ${props => props.theme.primary.fg};
     }
   }
   
