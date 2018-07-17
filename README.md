@@ -23,7 +23,7 @@ You might want to have a set of example queries to your graphql server. This can
 file with links starting with `graphiql://` protocol:
 
 ```html
-<a href='graphiql://?query=query%20topUsers($count:%20Int)%20{%20allUsers(count:%20$count)%20{%20firstName%20lastName%20}%20}&variables={%20"count":%205%20}'>Get all users query</a>
+<a href='graphiql://?query=query%20topUsers($count:%20Int)%20{%20allUsers(count:%20$count)%20{%20firstName%20lastName%20}%20}&variables={%20"count":%205%20}'>Get top users query</a>
 ``` 
 
 The example above will open GraphiQL with the following query:
