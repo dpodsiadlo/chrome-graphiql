@@ -11,8 +11,7 @@ class Options extends React.Component {
         super(props)
 
         this.state = {
-            apiUrl: 'https://fakerql.com',
-            apiGraphqlEndpoint: '/graphql',
+            apiUrl: 'https://fakerql.com/graphql',
             apiAuthCookieName: '',
             apiAuthCookieValue: '',
         }
@@ -31,15 +30,23 @@ class Options extends React.Component {
             settings: this.state
         })
 
+        const {apiAuthCookieName, apiUrl, apiAuthCookieValue} = this.state
+
+        if (apiAuthCookieName && apiUrl) {
+            chrome.cookies.set({
+                url: apiUrl,
+                name: apiAuthCookieName,
+                value: apiAuthCookieValue,
+            })
+        }
+
         this.goToEditor()
     }
 
     goToEditor = () => {
-
         chrome.tabs.query({url: urls.editor}, tabs => {
             tabs.forEach(tab => {
-                // forcing reload on every editor
-                chrome.tabs.update(tab.id, {active: true, url: tab.url})
+                chrome.tabs.update(tab.id, {active: true})
             })
             window.close()
         })
@@ -52,13 +59,6 @@ class Options extends React.Component {
                 <input type="text"
                        value={this.state.apiUrl}
                        onInput={this.handleSettingChange('apiUrl')}
-                />
-            </div>
-            <div className="row">
-                <span>Graphql endpoint</span>
-                <input type="text"
-                       value={this.state.apiGraphqlEndpoint}
-                       onInput={this.handleSettingChange('apiGraphqlEndpoint')}
                 />
             </div>
             <div className="splitter"></div>
