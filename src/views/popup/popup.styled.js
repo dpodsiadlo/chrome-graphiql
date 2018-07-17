@@ -1,5 +1,13 @@
-import React from  'react'
-import styled  from 'styled-components'
+import React from 'react'
+import styled, {injectGlobal} from 'styled-components'
+
+injectGlobal`
+    body {
+        padding: 0;
+        margin: 0;
+    }
+`
+
 
 export default styled.div`
   display: flex;

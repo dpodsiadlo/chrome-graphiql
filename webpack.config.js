@@ -28,7 +28,6 @@ module.exports = {
     devtool: "source-map",
     entry: {
         ...getViews(),
-        content: './src/content.js',
         vendors: Object.keys(pkg.dependencies),
     },
     output: {

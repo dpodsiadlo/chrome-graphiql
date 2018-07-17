@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import withTheme from '../../common/theme.styled'
 import Styled from './popup.styled'
-
+import urls from '../../common/urls'
 
 const openTab = localUrl => () => {
     chrome.tabs.query({url: localUrl}, function (tabs) {
@@ -21,8 +21,8 @@ const openTab = localUrl => () => {
 const Popup = () => (
     <Styled>
         <div className="logo">GraphiQL</div>
-        <button onClick={openTab(chrome.extension.getURL('editor.html'))}>Open editor</button>
-        <button onClick={openTab('chrome://extensions/?options=' + chrome.runtime.id)}>Options</button>
+        <button onClick={openTab(urls.editor)}>Open editor</button>
+        <button onClick={openTab(urls.options)}>Options</button>
     </Styled>
 )
 
