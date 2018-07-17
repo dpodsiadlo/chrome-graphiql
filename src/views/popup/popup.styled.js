@@ -15,7 +15,7 @@ export default styled.div`
   width: auto;
   height: auto;
   white-space: nowrap;
-  margin: 0;
+  margin: 0 0 1em 0;
   
   button {
     display: inline-block;
