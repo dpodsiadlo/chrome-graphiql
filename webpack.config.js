@@ -38,7 +38,6 @@ module.exports = {
         rules: [
             {
                 oneOf: [
-                    {test: /\.flow$/, loader: 'ignore-loader'},
                     {
                         test: /\.(js|jsx|mjs|flow)$/,
                         include: paths.appSrc,
@@ -62,7 +61,7 @@ module.exports = {
                     }
                 ]
             },
-
+            {test: /\.flow$/, loader: 'ignore-loader'}
         ]
     },
     plugins: [
@@ -73,13 +72,11 @@ module.exports = {
     optimization: {
         nodeEnv: 'production',
         splitChunks: {
-            name: 'vendors',
             cacheGroups: {
                 vendors: {
                     chunks: 'all',
                     name: 'vendors',
-                    test: 'vendors',
-                    enforce: true
+                    priority: -10,
                 },
             }
         }
